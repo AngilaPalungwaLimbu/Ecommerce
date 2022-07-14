@@ -15,9 +15,9 @@
                             class="hide-menu">Company</span></a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="widgets.html"
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/category"
                         aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-                            class="hide-menu">Unit</span></a>
+                            class="hide-menu">Category</span></a>
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="widgets.html"

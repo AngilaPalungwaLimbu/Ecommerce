@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
@@ -27,4 +28,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::resource('company', CompanyController::class);
+    Route::resource('category', CategoryController::class);
 });
