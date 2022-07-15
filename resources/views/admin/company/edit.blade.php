@@ -10,8 +10,10 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="/company/" , method="post" enctype="multipart/form-data">
+                    <form action="/company/{{ $company->id }}" , method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
+
                         <div class="form-group">
                             <label for="name">Company Name <span class="text-danger">*</span></label>
                             <input type="text" name="name" id="name" class="form-control"

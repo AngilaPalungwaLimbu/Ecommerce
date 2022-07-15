@@ -17,7 +17,11 @@
     <link href=" {{ asset('dash/assets/libs/flot/css/float-chart.css') }}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="{{ asset('dash/dist/css/style.min.css') }}" rel="stylesheet" />
-
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 250px;
+        }
+    </style>
 </head>
 
 <body>
@@ -161,6 +165,24 @@
     <script src="{{ asset('dash/assets/libs/flot/jquery.flot.crosshair.js') }}"></script>
     <script src="{{ asset('dash/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
     <script src="{{ asset('dash/dist/js/pages/chart/chart-page-init.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+      <script>
+          $(document).ready(function() {
+
+              $(".").select2({
+                  width: 'resolve' // need to override the changed default
+              });
+
+          });
+      </script>
 </body>
 
 </html>

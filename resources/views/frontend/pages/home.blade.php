@@ -16,7 +16,7 @@
            </div> --}}
             <!-- Deals-->
             <div class="container bg-white p-4 mb-4">
-                <h4 class="fw-bold">DEALS OF THE DAY</h4>
+                <h4 class="fw-bold">Grocery</h4>
                 <hr>
                 <div class="row g-4">
                     <div class="col-md-3">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Featured Product-->
+            {{-- <!-- Featured Product-->
             <div class="container bg-white p-4 mb-4">
                 <h4 class="fw-bold">FEATURED PRODUCT</h4>
                 <hr>
@@ -94,7 +94,7 @@
                             </x-components>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- Footer -->
         <x-components.footer>
