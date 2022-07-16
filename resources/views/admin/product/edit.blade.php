@@ -30,6 +30,16 @@
 
                         </div>
                         <div class="form-group">
+                            <label for="name"> Unit <span class="text-danger">*</span></label>
+
+                            <select name="unit_id" id="unit_id" class="form-select form-control select2" >
+                                @foreach ($units as $unit)
+                                    <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
+                        <div class="form-group">
                             <label for="price">Price<span class="text-danger">*</span></label>
                             <input type="text" name="price" id="price" class="form-control"
                                 placeholder="Enter product price" value="{{ $product->price }}">
@@ -39,11 +49,11 @@
                             <input type="text" name="discount_percent" id="discount_percent" class="form-control"
                                 placeholder="Enter discount percentage" value="{{ $product->discount_percent }}">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="selling_price">Selling Price <span class="text-danger">*</span></label>
                             <input type="text" name="selling_price" id="selling_price" class="form-control"
                                 placeholder="Enter Selling Price" value="{{ $product->selling_price }}">
-                        </div>
+                        </div> --}}
 
 
                         <div class="form-group">

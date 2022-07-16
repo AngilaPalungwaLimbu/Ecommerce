@@ -29,8 +29,8 @@
                                                     <img src="{{ asset($product->image) }}" width="64px" alt="">
                                                     <span class="ps-3">{{ $product->name }}</span>
                                                 </td>
-                                                <td>{{ $product->price }}</td>
-                                                <td>{{ $product->name }}</td>
+                                                <td>{{ $product->selling_price }}</td>
+                                                    <td>{{ $product->name }}</td>
                                                 <td>
                                                     <form action="/product/{{ $product->id }}" method="post">
                                                         @csrf

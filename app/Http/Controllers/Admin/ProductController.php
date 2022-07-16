@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -28,7 +29,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories=Category::all();
-        return view('admin.product.create',compact('categories'));
+        $units=Unit::all();
+        return view('admin.product.create',compact('categories','units'));
 
     }
 
@@ -44,9 +46,10 @@ class ProductController extends Controller
         $product->name=$request->name;
         $product->price=$request->price;
         $product->discount_percent=$request->discount_percent;
-        $product->selling_price=$request->selling_price;
+        $product->selling_price=$request->price-($request->price*$request->discount)/100;
         $product->description=$request->description;
         $product->category_id=$request->category_id;
+        $product->unit_id=$request->unit_id;
         if($request->hasFile('image')){
             $file=$request->image;
             $newName=time().'.'.$file->getClientOriginalExtension();
@@ -79,7 +82,8 @@ class ProductController extends Controller
     {
         $product=Product::find($id);
         $categories=Category::all();
-        return view('admin.product.edit',compact('product','categories'));
+        $units=Unit::all();
+        return view('admin.product.edit',compact('product','categories','units'));
     }
 
     /**
@@ -98,6 +102,8 @@ class ProductController extends Controller
         $product->selling_price=$request->selling_price;
         $product->description=$request->description;
         $product->category_id=$request->category_id;
+        $product->unit_id=$request->unit_id;
+
         if($request->hasFile('image')){
             $file=$request->image;
             $newName=time().'.'.$file->getClientOriginalExtension();
@@ -118,6 +124,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product=Product::find($id);
+        $product->categories()->dissociate();
         $product->delete();
         return redirect('/product');
     }

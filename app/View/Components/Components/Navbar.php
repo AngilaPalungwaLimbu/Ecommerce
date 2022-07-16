@@ -2,18 +2,22 @@
 
 namespace App\View\Components\Components;
 
+use App\Models\Cart;
 use Illuminate\View\Component;
 
 class Navbar extends Component
 {
+
+    protected $cartCount;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    protected $product;
+    public function __construct($cartCount)
     {
-        //
+        $this->cartCount=$cartCount;
     }
 
     /**
@@ -23,6 +27,7 @@ class Navbar extends Component
      */
     public function render()
     {
-        return view('components.components.navbar');
+        $cartCount=$this->cartCount;
+        return view('components.components.navbar',compact('cartCount'));
     }
 }

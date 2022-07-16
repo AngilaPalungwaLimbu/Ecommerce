@@ -6,14 +6,14 @@ use Illuminate\View\Component;
 
 class Product extends Component
 {
+    protected $product;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
+    public function __construct($product){
+        $this->product=$product;
     }
 
     /**
@@ -23,6 +23,7 @@ class Product extends Component
      */
     public function render()
     {
-        return view('components.components.product');
+        $products=$this->product;
+        return view('components.components.product',compact('products'));
     }
 }

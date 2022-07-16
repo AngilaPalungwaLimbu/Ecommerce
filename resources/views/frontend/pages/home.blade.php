@@ -2,8 +2,8 @@
     <x-slot name='title'>Home</x-slot>
 
     <!-- Navbar -->
-    <x-components.navbar>
-        </x-components>
+    <x-components.navbar :cartCount=$cartCount>
+    </x-components>
 
         <!-- Slot data goes here -->
         <div class="container-fluid bg-grey py-4 ">
@@ -14,31 +14,17 @@
             <a href="/" class="text-dark text-decoration-none "><h2 class="fw-bold mb-3">Welcome {{ Auth::user()->name }}</h2></a>
             @endguest
            </div> --}}
-            <!-- Deals-->
-            <div class="container bg-white p-4 mb-4">
+            <!-- Grocery-->
+            <div class="container bg-white p-4 b-4">
                 <h4 class="fw-bold">Grocery</h4>
                 <hr>
                 <div class="row g-4">
+                    @foreach ($groceries as $item)
                     <div class="col-md-3">
-                        <x-components.product>
+                        <x-components.product :product=$item>
                             </x-components>
                     </div>
-                    <div class="col-md-3">
-                        <x-components.product>
-                            </x-components>
-                    </div>
-                    <div class="col-md-3">
-                        <x-components.product>
-                            </x-components>
-                    </div>
-                    <div class="col-md-3">
-                        <x-components.product>
-                            </x-components>
-                    </div>
-                    <div class="col-md-3">
-                        <x-components.product>
-                            </x-components>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             {{-- <!-- Featured Product-->

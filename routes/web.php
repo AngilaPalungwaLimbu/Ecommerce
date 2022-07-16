@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[PageController::class,'home']);
 Route::get('/product_detail/{id}',[PageController::class,'product']);
 Route::get('/cart',[PageController::class,'cart']);
+Route::post('/cart',[PageController::class,'addToCart']);
+Route::delete('/cart/{id}',[PageController::class,'deleteCartItem']);
+Route::put('/cart/{id}',[PageController::class,'addToCart']);
 
 Auth::routes();
 
@@ -34,5 +37,5 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::resource('product', ProductController::class);
     Route::resource('unit', UnitController::class);
 
-  
+
 });

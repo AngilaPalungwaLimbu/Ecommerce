@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg pcolor p-1">
     <div class="container">
-      <a class="navbar-brand fs-2 fw-bold text-white" href="#">Happy<span class="text-warning">Mart</span></a>
+      <a class="navbar-brand fs-2 fw-bold text-white" href="/">Happy<span class="text-warning">Mart</span></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -20,7 +20,15 @@
           </li>
             @else
             <li class="nav-item">
-                <a class="nav-link text-white fs-5"><i class="fa-solid fa-cart-shopping me-2"></i></a>
+                @if ($cartCount>0)
+                    <a class="nav-link text-white fs-5" href="/cart">
+                        <i class="fa badge" style="font-size:24px"  value={{ $cartCount }}>&#xf07a;</i>
+                    </a>
+                @else
+                <a class="nav-link text-white fs-5" href="/cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+                @endif
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white fs-5 "><i class="fa-solid fa-user me-2"></i></a>
