@@ -14,14 +14,25 @@ class PageController extends Controller
     {
         $grocery = Category::where('slug', 'grocery')->first();
         $groceries = Product::where('category_id', $grocery->id)->get();
-        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
-        return view('frontend.pages.home', compact('groceries','cartCount'));
+        if(Auth::user()){
+            $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+            return view('frontend.pages.home', compact('groceries','cartCount'));
+        }else{
+            $cartCount=0;
+            return view('frontend.pages.home', compact('groceries','cartCount'));
+        }
+
     }
     public function product($id)
     {
         $product = Product::find($id);
-        $cartCount = Cart::where('user_id', Auth::user()->id)->count();
-        return view('frontend.pages.product_detail', compact('product','cartCount'));
+        if(Auth::user()){
+            $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+            return view('frontend.pages.product_detail', compact('product','cartCount'));
+        }else{
+
+            return view('frontend.pages.product_detail', compact('product','cartCount'));
+        }
     }
     public function cart()
     {
@@ -53,7 +64,7 @@ class PageController extends Controller
     public function UpdateCartItem(Request $request, $id)
     {
         $cart = Cart::find($id);
-        // return $request;
+        // return $cart;
         $cart->qty = $request->qty;
         $cart->amount = $request->selling_price * $request->qty;
         $cart->user_id = Auth::user()->id;

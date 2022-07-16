@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use View;
 
-use App\Models\Category;
-use App\Models\Product;
 
 
 class BaseController extends Controller
@@ -16,8 +14,13 @@ class BaseController extends Controller
     public function __construct()
     {
 
-        $CartCount=Cart::where('user_id',Auth::user()->id)->count();
-        View::share('cart',$CartCount);
+        if(Auth::user()){
+            $cartCount=Cart::where('user_id',Auth::user()->id)->count();
+        }
+        else{
+            $cartCount=0;
+        }
+        View::share('cart',$cartCount);
 
     }
 }

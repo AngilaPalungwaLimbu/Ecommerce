@@ -25,7 +25,7 @@ Route::get('/product_detail/{id}',[PageController::class,'product']);
 Route::get('/cart',[PageController::class,'cart']);
 Route::post('/cart',[PageController::class,'addToCart']);
 Route::delete('/cart/{id}',[PageController::class,'deleteCartItem']);
-Route::put('/cart/{id}',[PageController::class,'addToCart']);
+Route::put('/cart/{id}',[PageController::class,'UpdateCartItem']);
 
 Auth::routes();
 
