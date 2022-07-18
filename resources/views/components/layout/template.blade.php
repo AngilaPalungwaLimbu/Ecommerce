@@ -15,6 +15,10 @@
 
 </head>
 <body>
+     <!-- Navbar -->
+     {{-- <x-components.navbar :cartCount=$cartCount>
+    </x-components> --}}
+
 
     {{ $slot }}
 

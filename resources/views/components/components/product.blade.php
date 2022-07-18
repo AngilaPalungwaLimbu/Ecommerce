@@ -5,8 +5,12 @@
                 <img src="{{ asset($products->image) }} " class="img-fluid" alt="">
             </div>
             <div class="p-3">
-                <h5>{{ $products->name }}</h5>
-                <p>{{ $products->selling_price }}  <span> {{ $products->unit->name }}</span></p>
+                <p class="fs-6">{{ $products->name }}</p>
+                <span class="ptext fs-4">NRs.{{ $products->selling_price }}</span>
+                @if ($products->discount_percent > 0)
+                    <span class="text-secondary ms-2 fs-6 text-decoration-line-through">Nrs.{{ $products->price }}</span>
+                @endif
+                {{-- <span> per {{ $products->unit->name }}</span> --}}
             </div>
         </div>
     </a>

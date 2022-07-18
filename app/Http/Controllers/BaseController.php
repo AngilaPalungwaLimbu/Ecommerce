@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use View;
+use Illuminate\Support\Facades\View;
+// use View;
 
 
 

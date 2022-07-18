@@ -9,15 +9,16 @@ class Navbar extends Component
 {
 
     protected $cartCount;
+    // protected $category;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    protected $product;
     public function __construct($cartCount)
     {
         $this->cartCount=$cartCount;
+        // $this->category=$category;
     }
 
     /**
@@ -28,6 +29,8 @@ class Navbar extends Component
     public function render()
     {
         $cartCount=$this->cartCount;
+        // $category=$this->category;
+
         return view('components.components.navbar',compact('cartCount'));
     }
 }

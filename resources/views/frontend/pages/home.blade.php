@@ -2,7 +2,7 @@
     <x-slot name='title'>Home</x-slot>
 
     <!-- Navbar -->
-    <x-components.navbar :cartCount=$cartCount>
+    <x-components.navbar :cartCount=$cartCount >
     </x-components>
 
         <!-- Slot data goes here -->
@@ -16,11 +16,25 @@
            </div> --}}
             <!-- Grocery-->
             <div class="container bg-white p-4 b-4">
+                <h4 class="fw-bold">DEALS OF THE DAY</h4>
+                <hr>
+                <div class="row g-4">
+                    @foreach ($maxDisc as $item)
+                    <div class="col-md-3  col-6">
+                        <x-components.product :product=$item>
+                            </x-components>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <!-- Grocery-->
+            <div class="container bg-white p-4 b-4">
                 <h4 class="fw-bold">Grocery</h4>
                 <hr>
                 <div class="row g-4">
                     @foreach ($groceries as $item)
-                    <div class="col-md-3">
+                    <div class="col-md-3  col-6">
                         <x-components.product :product=$item>
                             </x-components>
                     </div>

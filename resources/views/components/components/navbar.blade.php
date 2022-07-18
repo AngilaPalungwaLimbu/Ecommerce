@@ -30,7 +30,9 @@
                     </a>
                 @endif
 
-                <a class=" fs-5 me-0 text-secondary "><i class="fa-solid fa-user mx-4"></i></a>
+                <a class=" fs-5 me-0" href="/user">
+                    <i class="fa-solid fa-user mx-4  text-secondary"></i>
+                </a>
 
                 <a class="fs-5 w-100% text-secondary" href="{{ route('logout') }}"
                     style="text-decoration: none !important; "
@@ -54,7 +56,12 @@
             Product Categories
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Grocery</a></li>
+{{--
+            @foreach ($category as $item)
+
+            <li><a class="dropdown-item" href="#">{{ $category->name }}</a></li>
+            @endforeach --}}
+            <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
         </ul>
@@ -62,7 +69,7 @@
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+        <div class="collapse navbar-collapse d-flex justify-content-center " id="navbarNav">
             <ul class="navbar-nav text-white">
                 <li class="nav-item">
                     <a class="nav-link text-white  fw-bold me-3" aria-current="page" href="#">Home</a>

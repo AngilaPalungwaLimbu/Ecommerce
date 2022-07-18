@@ -5,35 +5,56 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
+// use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if(Auth::user()){
+                $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+                View::share([
+                    'cartCount'=>$cartCount
+                ]);
+
+            }else{
+                View::share([
+                    'cartCount'=>0
+                ]);
+            }
+         return $next($request);
+        });
+    }
+
+
     public function home()
     {
         $grocery = Category::where('slug', 'grocery')->first();
         $groceries = Product::where('category_id', $grocery->id)->get();
-        if(Auth::user()){
-            $cartCount = Cart::where('user_id', Auth::user()->id)->count();
-            return view('frontend.pages.home', compact('groceries','cartCount'));
-        }else{
-            $cartCount=0;
-            return view('frontend.pages.home', compact('groceries','cartCount'));
-        }
+        $groceries = Product::where('category_id', $grocery->id)->get();
+        $maxDisc = Product::orderBy('discount_percent','DESC')->limit(10)->get();
+        // $category = Category::where('status', true)->get();
+        // if(Auth::user()){
+        //     $cartCount = Cart::where('user_id', Auth::user()->id)->count();
+
+        // }else{
+        //     $cartCount=0;
+        // }
+        return view('frontend.pages.home', compact('groceries' ,'maxDisc',));
 
     }
     public function product($id)
     {
         $product = Product::find($id);
-        if(Auth::user()){
-            $cartCount = Cart::where('user_id', Auth::user()->id)->count();
-            return view('frontend.pages.product_detail', compact('product','cartCount'));
-        }else{
-
-            return view('frontend.pages.product_detail', compact('product','cartCount'));
-        }
+        return view('frontend.pages.product_detail', compact('product',));
     }
+
+
+    // Cart
     public function cart()
     {
         if (Auth::user()) {

@@ -1,31 +1,47 @@
-.pcolor{
+.pcolor {
     background-color: #0f9015;
 }
 
+.ptext {
+    color: #0f9015;
+}
 
-.card:hover{
+
+.card:hover {
 
     box-shadow: 5px 6px 6px 2px #e9ecef;
     transform: scale(1.02);
 }
-.pborder{
+
+.pborder {
     border-color: #e7e9eb !important;
 }
-.bg-grey{
+
+.bg-grey {
     background-color: #f1f3f6;
 }
-.badge:after{
-    content:attr(value);
-    font-size:12px;
+
+.badge:after {
+    content: attr(value);
+    font-size: 12px;
     background: red;
     color: white;
-    border-radius:50%;
-    padding:5px;
-    position:relative;
-    left:-8px;
-    top:-16px;
-    opacity:0.9;
-    }
+    border-radius: 50%;
+    padding: 5px;
+    position: relative;
+    left: -8px;
+    top: -16px;
+    opacity: 0.9;
+}
+
+.nav-link[data-toggle].collapsed:after {
+    content: " ▾";
+}
+
+.nav-link[data-toggle]:not(.collapsed):after {
+    content: " ▴";
+}
+
 /* input,
 textarea {
   border: 1px solid #eeeeee;

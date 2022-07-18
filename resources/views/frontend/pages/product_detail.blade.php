@@ -12,7 +12,7 @@
                     <div class="col-md-4">
                         <img src="{{ asset($product->image) }}" class="img-fluid" alt="">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 ">
                         <form action="/cart" method="post">
                             @csrf
                             <h2 >{{ $product->name }}</h2>

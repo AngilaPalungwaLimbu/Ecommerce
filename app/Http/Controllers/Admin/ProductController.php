@@ -99,7 +99,7 @@ class ProductController extends Controller
         $product->name=$request->name;
         $product->price=$request->price;
         $product->discount_percent=$request->discount_percent;
-        $product->selling_price=$request->selling_price;
+        $product->selling_price=$request->price - ($request->price*$request->discount)/100;
         $product->description=$request->description;
         $product->category_id=$request->category_id;
         $product->unit_id=$request->unit_id;
